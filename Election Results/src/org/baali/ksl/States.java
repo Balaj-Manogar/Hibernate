@@ -6,9 +6,12 @@ import javax.persistence.*;
 public class States
 {
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int sid;
 	private String name;
 	private int isUnionTerritory;
+	@Embedded
+	private Constituency constituency;
 
 	public int getSid()
 	{
@@ -33,6 +36,14 @@ public class States
 	public void setIsUnionTerritory(int isUnionTerritory)
 	{
 		this.isUnionTerritory = isUnionTerritory;
+	}
+	public Constituency getConstituency()
+	{
+		return constituency;
+	}
+	public void setConstituency(Constituency constituency)
+	{
+		this.constituency = constituency;
 	}
 
 

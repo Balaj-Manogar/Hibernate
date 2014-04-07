@@ -1,5 +1,6 @@
 package org.baali.test;
 
+import org.baali.ksl.Constituency;
 import org.baali.ksl.States;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -23,12 +24,20 @@ public class MainApp
 		Session session = sessionFactory.openSession();
 
 		States tn = new States();
-		tn.setName("Andhra Preadesh");
-		tn.setSid(1);
+		tn.setName("Tamil Nadu");
 		tn.setIsUnionTerritory(0);
+		
+		Constituency arni = new Constituency();
+		arni.setcName("Arni");
+		arni.setResultStatus(1);
+		arni.setStateId(29);
+		tn.setConstituency(arni);
+		
+		//tn.setSid(1);
+		
 
 		session.beginTransaction();
-		session.save(tn);
+		session.saveOrUpdate(tn);
 		session.getTransaction().commit();
 		session.close();
 
