@@ -1,5 +1,8 @@
 package org.baali.ksl;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,9 +13,21 @@ public class States
 	private int sid;
 	private String name;
 	private int isUnionTerritory;
-	@Embedded
-	private Constituency constituency;
+	@ElementCollection
+	@JoinTable( name="constituency",
+			joinColumns=@JoinColumn(name="sid")
+	)
+	private Set<Constituency> constituency = new HashSet<>();
+	
 
+	public Set<Constituency> getConstituency()
+	{
+		return constituency;
+	}
+	public void setConstituency(Set<Constituency> constituency)
+	{
+		this.constituency = constituency;
+	}
 	public int getSid()
 	{
 		return sid;
@@ -37,14 +52,7 @@ public class States
 	{
 		this.isUnionTerritory = isUnionTerritory;
 	}
-	public Constituency getConstituency()
-	{
-		return constituency;
-	}
-	public void setConstituency(Constituency constituency)
-	{
-		this.constituency = constituency;
-	}
+	
 
 
 

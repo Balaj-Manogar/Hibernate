@@ -27,17 +27,28 @@ public class MainApp
 		tn.setName("Tamil Nadu");
 		tn.setIsUnionTerritory(0);
 		
+		
 		Constituency arni = new Constituency();
 		arni.setcName("Arni");
 		arni.setResultStatus(1);
-		arni.setStateId(29);
-		tn.setConstituency(arni);
+		arni.setConsId(11);
+		
+		
+		Constituency vellore = new Constituency();
+		vellore.setcName("Vellore");
+		vellore.setConsId(10);
+		vellore.setResultStatus(1);
+		
+		
+		tn.getConstituency().add(vellore);
+		tn.getConstituency().add(arni);
+		
 		
 		//tn.setSid(1);
 		
 
 		session.beginTransaction();
-		session.saveOrUpdate(tn);
+		session.save(tn);
 		session.getTransaction().commit();
 		session.close();
 

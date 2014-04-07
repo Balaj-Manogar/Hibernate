@@ -1,15 +1,17 @@
 package org.baali.ksl;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.type.TrueFalseType;
+
 @Embeddable
 public class Constituency
 {
 	
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int consId;
 	private String cName;	
 	private int stateId;
