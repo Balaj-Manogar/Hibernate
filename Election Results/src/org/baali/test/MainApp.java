@@ -23,7 +23,7 @@ public class MainApp
 		Session session = sessionFactory.openSession();
 
 		States tn = new States();
-		tn.setName("Karnataka");
+		tn.setName("Andhra Preadesh");
 		tn.setSid(1);
 		tn.setIsUnionTerritory(0);
 
