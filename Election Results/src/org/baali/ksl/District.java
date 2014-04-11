@@ -1,5 +1,8 @@
 package org.baali.ksl;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,7 +16,19 @@ public class District
 	@JoinColumn(name="sid")	
 	private States state;
 	
+	@OneToMany(mappedBy="district")
+	private Collection<Constituency> constituency = new ArrayList<Constituency>();
 	
+	
+	
+	public Collection<Constituency> getConstituency()
+	{
+		return constituency;
+	}
+	public void setConstituency(Collection<Constituency> constituency)
+	{
+		this.constituency = constituency;
+	}
 	public States getState()
 	{
 		return state;

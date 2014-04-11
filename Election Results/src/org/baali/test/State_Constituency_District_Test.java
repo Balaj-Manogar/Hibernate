@@ -36,16 +36,24 @@ public class State_Constituency_District_Test
 		
 		con1.setcName("Arni");
 		con1.setResultStatus(1);		
-		con1.setState(tn);			
+		con1.setState(tn);
+		
 		
 		con2.setcName("Vellore");		
 		con2.setResultStatus(1);
 		con2.setState(tn);
 		
+		
 		dist1.setName("Thiruvannamalai Dist");
 		dist1.setState(tn);
+		dist1.getConstituency().add(con1);
+		
 		dist2.setName("Vellore Dist");
 		dist2.setState(tn);
+		dist2.getConstituency().add(con2);
+		
+		con1.setDistrict(dist1);
+		con2.setDistrict(dist2);
 		
 		tn.getConstituency().add(con2);
 		tn.getConstituency().add(con1);
