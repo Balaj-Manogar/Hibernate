@@ -20,8 +20,19 @@ public class States
 	@OneToMany(mappedBy="state")
 	private Collection<Constituency> constituency = new ArrayList<Constituency>();
 	
+	@OneToMany(mappedBy="state")
+	private Collection<District> district = new ArrayList<District>();
 	
 	
+	
+	public Collection<District> getDistrict()
+	{
+		return district;
+	}
+	public void setDistrict(Collection<District> district)
+	{
+		this.district = district;
+	}
 	public Collection<Constituency> getConstituency()
 	{
 		return constituency;

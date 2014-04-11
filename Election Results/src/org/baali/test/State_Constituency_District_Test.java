@@ -1,6 +1,7 @@
 package org.baali.test;
 
 import org.baali.ksl.Constituency;
+import org.baali.ksl.District;
 import org.baali.ksl.States;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -8,7 +9,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
-public class StateAndConstituencyTest
+public class State_Constituency_District_Test
 {
 
 	public static void main(String[] args)
@@ -24,24 +25,33 @@ public class StateAndConstituencyTest
 		Session session = sessionFactory.openSession();
 
 		States tn = new States();
-		tn.setName("Karnataka");
-		tn.setIsUnionTerritory(0);
+		Constituency con1 = new Constituency();
+		Constituency con2 = new Constituency();
+		District dist1 = new District();
+		District dist2 = new District();
 		
 		
-		Constituency arni = new Constituency();
-		arni.setcName("Bangalore");
-		arni.setResultStatus(1);
+		tn.setName("TN");
+		tn.setIsUnionTerritory(0);		
 		
-		arni.setState(tn);		
+		con1.setcName("Arni");
+		con1.setResultStatus(1);		
+		con1.setState(tn);			
 		
-		Constituency vellore = new Constituency();
-		vellore.setcName("Mangalore");
+		con2.setcName("Vellore");		
+		con2.setResultStatus(1);
+		con2.setState(tn);
 		
-		vellore.setResultStatus(1);
-		vellore.setState(tn);		
+		dist1.setName("Thiruvannamalai Dist");
+		dist1.setState(tn);
+		dist2.setName("Vellore Dist");
+		dist2.setState(tn);
 		
-		tn.getConstituency().add(vellore);
-		tn.getConstituency().add(arni);
+		tn.getConstituency().add(con2);
+		tn.getConstituency().add(con1);
+		
+		tn.getDistrict().add(dist1);
+		tn.getDistrict().add(dist2);
 		
 		
 		//tn.setSid(1);
@@ -49,8 +59,13 @@ public class StateAndConstituencyTest
 
 		session.beginTransaction();
 		session.save(tn);
-		session.save(arni);
-		session.save(vellore);
+		
+		session.save(con1);
+		session.save(con2);
+		
+		session.save(dist1);
+		session.save(dist2);
+		
 		session.getTransaction().commit();
 		session.close();
 

@@ -15,6 +15,7 @@
         
         <mapping class="org.baali.ksl.States"/>
         <mapping class="org.baali.ksl.Constituency"/>
+        <mapping class="org.baali.ksl.District"/>
         
     </session-factory>
 </hibernate-configuration>
