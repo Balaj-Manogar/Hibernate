@@ -11,11 +11,13 @@
         <property name="hibernate.default_schema">hibernate</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="show_sql">true</property>
-        <property name="hbm2ddl.auto">create</property>
+        <property name="hbm2ddl.auto">update</property>
         
         <mapping class="org.baali.ksl.States"/>
         <mapping class="org.baali.ksl.Constituency"/>
         <mapping class="org.baali.ksl.District"/>
+        <mapping class="org.baali.ksl.Party"/>
+        <mapping class="org.baali.ksl.Group"/>
         
     </session-factory>
 </hibernate-configuration>

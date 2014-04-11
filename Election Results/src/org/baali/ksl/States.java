@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 public class States
 {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int sid;
 	private String name;
 	private int isUnionTerritory;

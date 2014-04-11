@@ -5,7 +5,7 @@ import java.util.Collection;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name="Group_Name")
 public class District
 {
 	@Id 
