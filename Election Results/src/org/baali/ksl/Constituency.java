@@ -1,22 +1,33 @@
 package org.baali.ksl;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
-import org.hibernate.type.TrueFalseType;
 
-@Embeddable
+
+@Entity
 public class Constituency
 {
-	
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int consId;
-	private String cName;	
-	private int stateId;
+	private String cName;
 	private int resultStatus;
+	@ManyToOne
+	@JoinColumn(name="sid")
+	private States state;
 	
+	public States getState()
+	{
+		return state;
+	}
+	public void setState(States state)
+	{
+		this.state = state;
+	}
 	public int getConsId()
 	{
 		return consId;
@@ -33,14 +44,7 @@ public class Constituency
 	{
 		this.cName = cName;
 	}
-	public int getStateId()
-	{
-		return stateId;
-	}
-	public void setStateId(int stateId)
-	{
-		this.stateId = stateId;
-	}
+	
 	public int getResultStatus()
 	{
 		return resultStatus;

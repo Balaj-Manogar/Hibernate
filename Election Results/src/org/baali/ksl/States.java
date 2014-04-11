@@ -1,9 +1,13 @@
 package org.baali.ksl;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.Collection;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class States
@@ -13,18 +17,16 @@ public class States
 	private int sid;
 	private String name;
 	private int isUnionTerritory;
-	@ElementCollection
-	@JoinTable( name="constituency",
-			joinColumns=@JoinColumn(name="sid")
-	)
-	private Set<Constituency> constituency = new HashSet<>();
+	@OneToMany(mappedBy="state")
+	private Collection<Constituency> constituency = new ArrayList<Constituency>();
 	
-
-	public Set<Constituency> getConstituency()
+	
+	
+	public Collection<Constituency> getConstituency()
 	{
 		return constituency;
 	}
-	public void setConstituency(Set<Constituency> constituency)
+	public void setConstituency(Collection<Constituency> constituency)
 	{
 		this.constituency = constituency;
 	}

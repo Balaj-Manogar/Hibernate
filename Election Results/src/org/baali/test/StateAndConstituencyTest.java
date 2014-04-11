@@ -8,7 +8,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
-public class MainApp
+public class StateAndConstituencyTest
 {
 
 	public static void main(String[] args)
@@ -24,21 +24,21 @@ public class MainApp
 		Session session = sessionFactory.openSession();
 
 		States tn = new States();
-		tn.setName("Tamil Nadu");
+		tn.setName("Karnataka");
 		tn.setIsUnionTerritory(0);
 		
 		
 		Constituency arni = new Constituency();
-		arni.setcName("Arni");
+		arni.setcName("Bangalore");
 		arni.setResultStatus(1);
-		arni.setConsId(11);
 		
+		arni.setState(tn);		
 		
 		Constituency vellore = new Constituency();
-		vellore.setcName("Vellore");
-		vellore.setConsId(10);
-		vellore.setResultStatus(1);
+		vellore.setcName("Mangalore");
 		
+		vellore.setResultStatus(1);
+		vellore.setState(tn);		
 		
 		tn.getConstituency().add(vellore);
 		tn.getConstituency().add(arni);
@@ -49,6 +49,8 @@ public class MainApp
 
 		session.beginTransaction();
 		session.save(tn);
+		session.save(arni);
+		session.save(vellore);
 		session.getTransaction().commit();
 		session.close();
 
