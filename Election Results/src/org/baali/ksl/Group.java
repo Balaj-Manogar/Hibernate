@@ -5,7 +5,7 @@ import java.util.Collection;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name="group_name")
 public class Group
 {
 	@Id 
@@ -13,7 +13,7 @@ public class Group
 	private int gid;
 	private String name;
 	
-	@OneToMany(mappedBy="group")
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="group")
 	private Collection<Party> party = new ArrayList<Party>();
 
 	public int getGid()

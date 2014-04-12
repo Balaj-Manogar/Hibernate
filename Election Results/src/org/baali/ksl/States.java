@@ -3,6 +3,7 @@ package org.baali.ksl;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,10 +18,10 @@ public class States
 	private int sid;
 	private String name;
 	private int isUnionTerritory;
-	@OneToMany(mappedBy="state")
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="state")
 	private Collection<Constituency> constituency = new ArrayList<Constituency>();
 	
-	@OneToMany(mappedBy="state")
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="state")
 	private Collection<District> district = new ArrayList<District>();
 	
 	

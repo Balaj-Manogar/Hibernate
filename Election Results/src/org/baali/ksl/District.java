@@ -5,7 +5,7 @@ import java.util.Collection;
 
 import javax.persistence.*;
 
-@Entity(name="Group_Name")
+@Entity
 public class District
 {
 	@Id 
@@ -16,7 +16,7 @@ public class District
 	@JoinColumn(name="sid")	
 	private States state;
 	
-	@OneToMany(mappedBy="district")
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="district")
 	private Collection<Constituency> constituency = new ArrayList<Constituency>();
 	
 	

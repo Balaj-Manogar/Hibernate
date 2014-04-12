@@ -1,5 +1,8 @@
 package org.baali.ksl;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,6 +16,17 @@ public class Party
 	@JoinColumn(name="gid")
 	private Group group;
 	
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="party")
+	private Collection<Candidate> candidate = new ArrayList<Candidate>();
+	
+	public Collection<Candidate> getCandidate()
+	{
+		return candidate;
+	}
+	public void setCandidate(Collection<Candidate> candidate)
+	{
+		this.candidate = candidate;
+	}
 	public int getPid()
 	{
 		return pid;

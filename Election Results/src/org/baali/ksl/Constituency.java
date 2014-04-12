@@ -3,6 +3,7 @@ package org.baali.ksl;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,6 +30,17 @@ public class Constituency
 	@JoinColumn(name="did")
 	private District district;
 	
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="constituency")
+	private Collection<Candidate> candidate = new ArrayList<Candidate>();
+	
+	public Collection<Candidate> getCandidate()
+	{
+		return candidate;
+	}
+	public void setCandidate(Collection<Candidate> candidate)
+	{
+		this.candidate = candidate;
+	}
 	public District getDistrict()
 	{
 		return district;
